@@ -1,0 +1,22 @@
+{
+  "YI": {
+    "name": "Yi",
+    "zh": "彝族"
+  },
+  "BA": {
+    "name": "Bai",
+    "zh": "白族"
+  },
+  "ZH": {
+    "name": "Zhuang",
+    "zh": "壮族"
+  },
+  "UY": {
+    "name": "Uygur",
+    "zh": "维吾尔族"
+  },
+  "MA": {
+    "name": "Manchu",
+    "zh": "满族"
+  }
+}

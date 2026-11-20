@@ -1,0 +1,268 @@
+{
+  "collection": {
+    "YI": {
+      "candidates": 1526,
+      "unverified": 206,
+      "download_failed": 31,
+      "too_small": 8,
+      "ambiguous": 73,
+      "saved": 1195,
+      "corrupt_or_not_image": 11,
+      "exact_duplicate": 2
+    },
+    "BA": {
+      "candidates": 1100,
+      "unverified": 98,
+      "saved": 916,
+      "download_failed": 30,
+      "ambiguous": 26,
+      "corrupt_or_not_image": 22,
+      "too_small": 7,
+      "exact_duplicate": 1
+    },
+    "ZH": {
+      "candidates": 1416,
+      "download_failed": 34,
+      "saved": 1167,
+      "corrupt_or_not_image": 45,
+      "ambiguous": 63,
+      "unverified": 98,
+      "too_small": 8,
+      "exact_duplicate": 1
+    },
+    "UY": {
+      "candidates": 1315,
+      "ambiguous": 30,
+      "saved": 954,
+      "too_small": 41,
+      "unverified": 261,
+      "corrupt_or_not_image": 17,
+      "download_failed": 11,
+      "exact_duplicate": 1
+    },
+    "MA": {
+      "candidates": 1308,
+      "unverified": 273,
+      "saved": 933,
+      "ambiguous": 24,
+      "download_failed": 46,
+      "corrupt_or_not_image": 6,
+      "too_small": 24,
+      "exact_duplicate": 2
+    }
+  },
+  "status": {
+    "BA": {
+      "kept": 204,
+      "rejected": 457,
+      "screened": 255
+    },
+    "MA": {
+      "rejected": 382,
+      "kept": 255,
+      "screened": 296
+    },
+    "UY": {
+      "rejected": 323,
+      "screened": 325,
+      "kept": 306
+    },
+    "YI": {
+      "screened": 485,
+      "kept": 219,
+      "rejected": 491
+    },
+    "ZH": {
+      "rejected": 868,
+      "kept": 140,
+      "composed": 159
+    }
+  },
+  "rejections": {
+    "BA": {
+      "review": 107,
+      "multiple_subjects": 237,
+      "near_duplicate_of": 40,
+      "subject_too_small": 7,
+      "multi_group_evidence": 22,
+      "conflicting_labels": 4,
+      "no_subject": 30,
+      "no_parts": 7,
+      "near_duplicate_final": 3
+    },
+    "MA": {
+      "multiple_subjects": 208,
+      "no_subject": 16,
+      "review": 99,
+      "near_duplicate_of": 32,
+      "subject_too_small": 15,
+      "conflicting_labels": 1,
+      "multi_group_evidence": 7,
+      "no_parts": 3,
+      "near_duplicate_final": 1
+    },
+    "UY": {
+      "multiple_subjects": 158,
+      "conflicting_labels": 1,
+      "near_duplicate_of": 11,
+      "review": 54,
+      "multi_group_evidence": 30,
+      "subject_too_small": 12,
+      "no_parts": 9,
+      "no_subject": 46,
+      "blurry": 1,
+      "near_duplicate_final": 1
+    },
+    "YI": {
+      "multiple_subjects": 222,
+      "review": 120,
+      "near_duplicate_of": 25,
+      "multi_group_evidence": 80,
+      "conflicting_labels": 23,
+      "no_subject": 11,
+      "subject_too_small": 6,
+      "no_parts": 4
+    },
+    "ZH": {
+      "multi_group_evidence": 392,
+      "multiple_subjects": 331,
+      "review": 54,
+      "near_duplicate_of": 26,
+      "near_duplicate_final": 2,
+      "conflicting_labels": 27,
+      "subject_too_small": 17,
+      "no_parts": 10,
+      "no_subject": 9
+    }
+  },
+  "class_presence": {
+    "YI": {
+      "bottom": 199,
+      "dress": 98,
+      "headwear": 171,
+      "top": 121,
+      "footwear": 69,
+      "waistwear": 47
+    },
+    "BA": {
+      "top": 98,
+      "bottom": 175,
+      "headwear": 190,
+      "footwear": 72,
+      "waistwear": 142,
+      "dress": 103
+    },
+    "ZH": {
+      "bottom": 132,
+      "dress": 53,
+      "headwear": 128,
+      "waistwear": 81,
+      "top": 87,
+      "footwear": 92
+    },
+    "UY": {
+      "bottom": 216,
+      "dress": 211,
+      "headwear": 254,
+      "waistwear": 155,
+      "footwear": 159,
+      "top": 90
+    },
+    "MA": {
+      "dress": 151,
+      "headwear": 170,
+      "footwear": 109,
+      "waistwear": 104,
+      "bottom": 118,
+      "top": 105
+    }
+  },
+  "funnel": {
+    "search hits": 6665,
+    "label verified, saved": 5165,
+    "passed screening": 4974,
+    "strict one-group evidence": 4443,
+    "segmented by SAM 3": 3082,
+    "composed 512x512": 1724,
+    "reviewed by a person": 1558,
+    "final dataset": 1124
+  },
+  "not_segmented_reserve": 1361,
+  "source_categories_final": {
+    "shop": 529,
+    "social": 397,
+    "other": 77,
+    "news_publisher": 71,
+    "stock_photo": 28,
+    "reference": 17,
+    "institution": 3,
+    "museum": 2
+  },
+  "split_counts": {
+    "YI": {
+      "train": 153,
+      "val": 33,
+      "test": 33
+    },
+    "BA": {
+      "train": 143,
+      "val": 31,
+      "test": 30
+    },
+    "ZH": {
+      "train": 98,
+      "val": 21,
+      "test": 21
+    },
+    "UY": {
+      "train": 214,
+      "val": 46,
+      "test": 46
+    },
+    "MA": {
+      "train": 179,
+      "val": 38,
+      "test": 38
+    }
+  },
+  "images_with_class_per_split": {
+    "top": {
+      "train": 355,
+      "val": 74,
+      "test": 72
+    },
+    "bottom": {
+      "train": 576,
+      "val": 137,
+      "test": 127
+    },
+    "dress": {
+      "train": 424,
+      "val": 97,
+      "test": 95
+    },
+    "headwear": {
+      "train": 640,
+      "val": 137,
+      "test": 136
+    },
+    "footwear": {
+      "train": 348,
+      "val": 84,
+      "test": 69
+    },
+    "waistwear": {
+      "train": 367,
+      "val": 80,
+      "test": 82
+    }
+  },
+  "class_pixel_share_of_clothing": {
+    "top": 0.1707,
+    "bottom": 0.35,
+    "dress": 0.2865,
+    "headwear": 0.1001,
+    "footwear": 0.0085,
+    "waistwear": 0.0842
+  }
+}

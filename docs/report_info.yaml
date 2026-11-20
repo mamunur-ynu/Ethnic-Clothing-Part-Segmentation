@@ -1,0 +1,35 @@
+# Facts for the Word report (scripts/build_report.py reads this file).
+# Write only the truth. Any value left as TODO-FILL is printed as "TODO-FILL"
+# in the report, so you can see what is still missing.
+
+title_zh: 民族服饰语义分割数据集构建系统
+title_en: Ethnic Clothing Part-Segmentation Dataset Construction
+term: 2026年秋季学期
+course: 计算机视觉
+teacher: 黄珊珊
+report_date: TODO-FILL        # for example 2026-11-28
+
+leader:
+  name: MAMUN MD MAMUNUR RASHID
+  id: "20243120032"
+  major: 人工智能
+  grade: "2024"
+  phone: "13187410172"
+  email: mamunur.ynu@gmail.com
+
+members:                      # the leader first; workload must sum to 100
+  - name: MAMUN MD MAMUNUR RASHID
+    id: "20243120032"
+    major: 人工智能
+    grade: "2024"
+    tasks: TODO-FILL
+    workload: TODO-FILL
+  - name: IMAMUL HASAN MD
+    id: "20243120029"
+    major: 人工智能           # CONFIRM
+    grade: "2024"
+    tasks: TODO-FILL
+    workload: TODO-FILL
+
+# Who made the decisions stored as reviewer "reviewer_1" in data/manifest.db?
+reviewer_1_identity: TODO-FILL

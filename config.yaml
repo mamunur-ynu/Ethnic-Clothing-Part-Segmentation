@@ -1,0 +1,144 @@
+# ---------------------------------------------------------------------------
+# Ethnic clothing part-segmentation dataset — project configuration
+# Every stage reads this file. Change values here, not in the code.
+# ---------------------------------------------------------------------------
+
+project:
+  name: "Ethnic Clothing Part Segmentation"
+  seed: 2026
+  data_dir: data              # all intermediate files (raw, seg, work, manifest.db)
+  dataset_dir: dataset        # final deliverable in the brief's layout
+  reports_dir: reports        # figures and tables for the report / slides
+
+modal:
+  volume: mim-ethnoseg        # Modal Volume holding raw downloads + SAM 3 outputs
+  hf_secret: huggingface-secret   # Modal Secret that provides HF_TOKEN (gated facebook/sam3)
+  hf_secret_environment: Project  # Modal environment that holds that secret (blank = default)
+  gpu: [L4, A10G, T4]        # Modal tries them in this order (fallback if no L4 is free)
+  max_gpu_containers: 2
+
+# Ethnic groups. Labels come ONLY from the source page text (never from appearance).
+# zh: name that must appear on the source page; en_patterns: case-insensitive regexes.
+groups:
+  - code: YI
+    name: Yi
+    zh: 彝族
+    enabled: true
+    zh_aliases: []
+    en_patterns: ['\byi (ethnic|minority|people|nationality|women|woman|girl|costume|clothing|dress)']
+    queries: [彝族服饰, 彝族传统服装 全身, 彝族女装 头饰, 凉山彝族服饰, 彝族服饰 博物馆, 彝族盛装 火把节, Yi ethnic minority costume, 彝族演出服 女, 彝族舞蹈服装, 彝族服装 正面 全身]
+  - code: BA
+    name: Bai
+    zh: 白族
+    enabled: true
+    zh_aliases: []
+    en_patterns: ['\bbai (ethnic|minority|people|nationality|women|woman|girl|costume|clothing|dress)']
+    queries: [白族服饰, 大理白族服饰 全身, 白族女装 头饰, 白族金花 服装, 白族服饰 博物馆, 白族传统服装, Bai ethnic minority costume Dali, 白族演出服 女, 白族舞蹈服装, 白族服装 正面 全身]
+  - code: ZH
+    name: Zhuang
+    zh: 壮族
+    enabled: true
+    zh_aliases: []
+    en_patterns: ['\bzhuang (ethnic|minority|people|nationality|women|woman|girl|costume|clothing|dress)']
+    queries: [壮族服饰, 壮族传统服装 全身, 壮族女装, 广西壮族 民族服装, 壮族服饰 博物馆, 壮族三月三 服装, Zhuang ethnic minority costume, 壮族演出服 女, 壮族舞蹈服装, 壮族服装 正面 全身]
+  - code: UY
+    name: Uygur
+    zh: 维吾尔族
+    enabled: true
+    zh_aliases: [维吾尔, 维族]
+    en_patterns: ['\buy(g|gh)ur\b', '\buighur\b']
+    queries: [维吾尔族服饰, 维吾尔族传统服装 全身, 维吾尔族 艾德莱斯 连衣裙, 维吾尔族 花帽 服装, 维吾尔族服饰 博物馆, 新疆维吾尔族 民族服装, Uyghur traditional clothing, 维吾尔族演出服 女, 维吾尔族舞蹈服装, 维吾尔族服装 正面 全身]
+  - code: MA
+    name: Manchu
+    zh: 满族
+    enabled: true
+    zh_aliases: []
+    en_patterns: ['\bmanchu\b']
+    queries: [满族服饰, 满族传统服装 全身, 满族旗装, 满族女装 旗头, 满族服饰 博物馆, 满族民族服装, Manchu traditional clothing, 满族演出服 女, 满族舞蹈服装, 满族服装 正面 全身]
+  # Backups: switch one on (enabled: true) if a main group stays under ~150 usable images.
+  - code: HN
+    name: Hani
+    zh: 哈尼族
+    enabled: false
+    zh_aliases: []
+    en_patterns: ['\bhani (ethnic|minority|people|nationality|women|woman|girl|costume|clothing|dress)']
+    queries: [哈尼族服饰, 哈尼族传统服装 全身, 哈尼族女装 头饰, 哈尼族服饰 博物馆, Hani ethnic minority costume]
+  - code: NX
+    name: Naxi
+    zh: 纳西族
+    enabled: false
+    zh_aliases: []
+    en_patterns: ['\bnaxi\b']
+    queries: [纳西族服饰, 纳西族传统服装 全身, 纳西族女装, 纳西族服饰 博物馆, Naxi traditional clothing]
+  - code: KZ
+    name: Kazak
+    zh: 哈萨克族
+    enabled: false
+    zh_aliases: []
+    en_patterns: ['\bkaza(k|kh) (ethnic|minority|people|nationality|women|woman|girl|costume|clothing|dress)']
+    queries: [哈萨克族服饰, 哈萨克族传统服装 全身, 哈萨克族女装 帽子, 哈萨克族服饰 博物馆, Kazakh ethnic minority costume China]
+
+collect:
+  engines: [so360, baidu, bing]   # image search engines, tried in this order (360 Images, Baidu Images, Bing)
+  max_results_per_query: 150  # results requested per search term per engine
+  min_side_px: 300            # smaller downloads are rejected
+  store_max_side: 1280        # stored copies are shrunk to this (= segment.work_max_side)
+  max_image_mb: 15
+  page_timeout_s: 10
+  image_timeout_s: 15
+  workers: 16
+  max_groups_named_on_page: 2 # pages naming 3+ different ethnic groups are "ambiguous"
+  strict_evidence: true       # page title + evidence must name this group and no other of the 56
+
+screen:
+  min_side_px: 300
+  max_aspect: 3.0             # banners / long collages
+  blur_min: 60.0              # variance of Laplacian on a 512px grayscale copy
+  near_dup_hamming: 8         # 64-bit perceptual hash (pHash); <= this many bits = near-duplicate
+
+# Mask classes. 0 is background and also every non-clothing pixel (skin, hair, hands).
+classes:
+  - {id: 0, name: background}
+  - {id: 1, name: top,       prompts: [jacket, blouse, shirt, vest]}
+  - {id: 2, name: bottom,    prompts: [skirt, trousers]}
+  - {id: 3, name: dress,     prompts: [dress, robe]}
+  - {id: 4, name: headwear,  prompts: [hat, headdress, headscarf]}
+  - {id: 5, name: footwear,  prompts: [shoe, boot]}
+  - {id: 6, name: waistwear, prompts: [apron, belt, sash]}
+
+# Later classes are painted over earlier ones where SAM 3 masks overlap.
+paint_order: [dress, bottom, top, waistwear, footwear, headwear]
+
+segment:
+  model_id: facebook/sam3
+  max_per_group: 600          # SAM 3 budget per group (random, seeded); the rest stays in reserve
+  work_max_side: 1280         # images are resized to this before SAM 3; masks are saved at this size
+  person_prompt: person
+  garment_fallback_prompts: [clothing, garment]   # used when no person is found (flat-lay garments)
+  person_threshold: 0.5
+  part_threshold: 0.4
+  mask_threshold: 0.5
+  part_min_inside_subject: 0.5    # part instance must overlap the (dilated) subject mask at least this much
+  part_min_inside_loose: 0.05     # ... for headwear / footwear: they only need to touch the person (tall headdresses)
+  second_subject_ratio: 0.3       # another person >= 30% the size of the main one -> multiple subjects
+  two_piece_min_share: 0.04       # top AND bottom each >= 4% of subject -> outfit treated as two-piece
+  leftover_dress_min_share: 0.03
+
+compose:
+  size: 512
+  fill: 0.90                  # subject's longer side as a fraction of 512 (brief: >= 0.60)
+  min_subject_px: 256         # subject's longer side in the working image
+  min_fragment_share: 0.02    # mask fragments smaller than 2% of the main body are dropped
+  min_clothing_share: 0.05    # clothing pixels / subject pixels; below this -> no_parts
+  final_near_dup_hamming: 6   # pHash (64-bit) of the subject crop; candidate if <= 6 bits apart ...
+  final_pixel_diff: 0.03      # ... and confirmed only if the 48x64 crops differ by <= 3% per pixel
+
+split:
+  ratios: {train: 0.70, val: 0.15, test: 0.15}
+
+qc:
+  min_per_group: 100
+  min_total: 1000
+  max_center_offset: 0.10
+  min_fill: 0.60
+  split_tolerance: 0.05

@@ -1,0 +1,44 @@
+{
+  "images": 1124,
+  "images_checked_on_disk": 1124,
+  "per_group": {
+    "BA": {
+      "train": 143,
+      "test": 30,
+      "val": 31
+    },
+    "MA": {
+      "train": 179,
+      "test": 38,
+      "val": 38
+    },
+    "UY": {
+      "train": 214,
+      "val": 46,
+      "test": 46
+    },
+    "YI": {
+      "val": 33,
+      "test": 33,
+      "train": 153
+    },
+    "ZH": {
+      "test": 21,
+      "train": 98,
+      "val": 21
+    }
+  },
+  "largest_to_smallest_group": 2.19,
+  "pixel_share": {
+    "background": 0.7676,
+    "top": 0.0397,
+    "bottom": 0.0813,
+    "dress": 0.0666,
+    "headwear": 0.0233,
+    "footwear": 0.002,
+    "waistwear": 0.0196
+  },
+  "hard_failures": {},
+  "warnings": {},
+  "examples": {}
+}

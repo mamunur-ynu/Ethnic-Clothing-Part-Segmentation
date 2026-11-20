@@ -1,0 +1,26 @@
+# --- Local environment / IDE ---------------------------------------------
+.venv/
+venv/
+.idea/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ipynb_checkpoints/
+*.coverage
+.DS_Store
+Thumbs.db
+
+# --- Secrets (tokens live in Modal's secret store, never in the repo) ------
+.env
+*.env
+*.secret
+*token*
+
+# --- Raw and intermediate data: source photos have unknown licences -------
+data/
+
+
+
+
+# --- One-off diagnostic script ----------------------------------------------
+modal_debug_search.py
